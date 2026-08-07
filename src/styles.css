@@ -323,3 +323,37 @@
     transform: translateY(100%);
   }
 }
+
+/* --- Orbiting instrument rings --- */
+@keyframes orbit-cw {
+  from {
+    transform: rotate(var(--start-angle));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) + 360deg));
+  }
+}
+@keyframes orbit-ccw {
+  from {
+    transform: rotate(var(--start-angle));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) - 360deg));
+  }
+}
+@keyframes counter-cw {
+  from {
+    transform: rotate(var(--counter-offset, 0deg));
+  }
+  to {
+    transform: rotate(calc(var(--counter-offset, 0deg) - 360deg));
+  }
+}
+@keyframes counter-ccw {
+  from {
+    transform: rotate(var(--counter-offset, 0deg));
+  }
+  to {
+    transform: rotate(calc(var(--counter-offset, 0deg) + 360deg));
+  }
+}
