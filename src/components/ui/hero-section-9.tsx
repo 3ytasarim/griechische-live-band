@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import quaver from "@/assets/quaver.png";
 import type React from "react";
 
 interface HeroSectionProps {
@@ -8,6 +9,92 @@ interface HeroSectionProps {
   subtitle?: string;
   images: string[];
   className?: string;
+}
+
+interface NoteItem {
+  left: number;
+  size: number;
+  duration: number;
+  delay: number;
+  sway: number;
+  rotate: number;
+  opacity: number;
+  colorIndex: number;
+}
+
+/** Deterministic (SSR-safe) layout — notes rise from the bottom and fade out near the top. */
+const notes: NoteItem[] = Array.from({ length: 22 }, (_, i) => {
+  const s = (i * 37) % 100;
+  return {
+    left: 2 + ((i * 43) % 96),
+    size: 20 + (s % 5) * 9,
+    duration: 15 + (s % 8) * 2.4,
+    delay: (i * 1.3) % 16,
+    sway: (i % 2 === 0 ? 1 : -1) * (16 + (s % 6) * 8),
+    rotate: (i % 2 === 0 ? 1 : -1) * (10 + (s % 4) * 6),
+    opacity: 0.16 + (s % 5) * 0.04,
+    colorIndex: (i % 7) + 1,
+  };
+});
+
+/** Rising quaver notes + a soft red/gold color wash, so the hero doesn't feel empty. */
+function HeroBackdrop() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 18% 12%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 65%), " +
+            "radial-gradient(ellipse 55% 50% at 88% 90%, color-mix(in oklab, var(--red) 16%, transparent), transparent 65%)",
+        }}
+      />
+      {notes.map((n, i) => (
+        <motion.span
+          key={i}
+          className={`absolute bottom-0 text-instrument-${n.colorIndex}`}
+          style={{
+            left: `${n.left}%`,
+            width: n.size,
+            height: n.size,
+            display: "inline-block",
+            backgroundColor: "currentColor",
+            maskImage: `url(${quaver})`,
+            WebkitMaskImage: `url(${quaver})`,
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+          }}
+          initial={{ y: "10vh", x: 0, rotate: 0, opacity: 0 }}
+          animate={{
+            y: ["10vh", "-115vh"],
+            x: [0, n.sway, -n.sway, 0],
+            rotate: [0, n.rotate, -n.rotate, 0],
+            opacity: [0, n.opacity, n.opacity, 0],
+          }}
+          transition={{
+            duration: n.duration,
+            delay: n.delay,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+            opacity: {
+              duration: n.duration,
+              delay: n.delay,
+              repeat: Infinity,
+              ease: "linear",
+              times: [0, 0.12, 0.75, 1],
+            },
+            x: { duration: n.duration, delay: n.delay, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: n.duration, delay: n.delay, repeat: Infinity, ease: "easeInOut" },
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 const containerVariants = {
@@ -48,8 +135,9 @@ const floatingVariants = {
 /** Split hero: centered title/subtitle on the left, a proportioned photo collage on the right. */
 export function HeroSection({ eyebrow, title, subtitle, images, className }: HeroSectionProps) {
   return (
-    <section className={cn("w-full overflow-hidden", className)}>
-      <div className="container-lux grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+    <section className={cn("relative w-full overflow-hidden", className)}>
+      <HeroBackdrop />
+      <div className="container-lux relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
         {/* Sol: metin (ortalı) */}
         <motion.div
           className="flex flex-col items-center text-center"
