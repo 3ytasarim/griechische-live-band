@@ -1,80 +1,53 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface NavItem {
+export interface NavItem {
   name: string;
   url: string;
   icon: LucideIcon;
 }
 
-interface NavBarProps {
-  items: NavItem[];
-  className?: string;
-}
-
-export function NavBar({ items, className }: NavBarProps) {
-  const location = useLocation();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+export function NavBar({ items, className }: { items: NavItem[]; className?: string }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <div className={cn("z-50", className)}>
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
-        {items.map((item) => {
-          const Icon = item.icon;
-          const isActive =
-            item.url === "/"
-              ? location.pathname === "/"
-              : location.pathname.startsWith(item.url);
+    <div className={cn("flex items-center gap-1 rounded-full border border-border/60 bg-surface/80 px-1 py-1 backdrop-blur", className)}>
+      {items.map((item) => {
+        const Icon = item.icon;
+        const isActive = item.url === "/" ? pathname === "/" : pathname.startsWith(item.url);
 
-          return (
-            <Link
-              key={item.name}
-              to={item.url}
-              className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-foreground/80 hover:text-red",
-                isActive && "bg-muted text-red",
-              )}
-            >
-              <span className="hidden md:inline">{item.name}</span>
-              <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
-              </span>
-              {isActive && (
-                <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-red/5 rounded-full -z-10"
-                  initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-red rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-red/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-red/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-red/20 rounded-full blur-sm top-0 left-2" />
-                  </div>
-                </motion.div>
-              )}
-            </Link>
-          );
-        })}
-      </div>
+        return (
+          <Link
+            key={item.name}
+            to={item.url}
+            className={cn(
+              "relative cursor-pointer rounded-full px-5 py-2 text-sm font-semibold transition-colors",
+              "text-foreground/70 hover:text-red",
+              isActive && "text-red",
+            )}
+          >
+            <span className="relative z-10 hidden md:inline">{item.name}</span>
+            <span className="relative z-10 md:hidden">
+              <Icon size={18} strokeWidth={2.2} />
+            </span>
+            {isActive ? (
+              <motion.div
+                layoutId="tubelight"
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="absolute inset-0 -z-0 rounded-full bg-red/10"
+              >
+                <div className="absolute -top-2 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-red">
+                  <div className="absolute -top-2 -left-2 h-6 w-12 rounded-full bg-red/20 blur-md" />
+                  <div className="absolute -top-1 h-6 w-8 rounded-full bg-red/20 blur-md" />
+                  <div className="absolute top-0 left-2 h-4 w-4 rounded-full bg-red/20 blur-sm" />
+                </div>
+              </motion.div>
+            ) : null}
+          </Link>
+        );
+      })}
     </div>
   );
 }

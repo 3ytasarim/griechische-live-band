@@ -9,6 +9,7 @@ import giorgosKeys from "@/assets/giorgos-keyboards.jpg";
 import giorgosSaenger from "@/assets/giorgos-saenger.jpg";
 import bandKomplett from "@/assets/band-komplett.jpg";
 import bandKomplett3 from "@/assets/band-komplett-3.jpg";
+import bandKomplett3_2 from "@/assets/band-komplett-3-2.jpg";
 import liveBouzouki from "@/assets/live-bouzouki.jpg";
 import liveSaenger from "@/assets/live-saenger.jpg";
 import liveSaenger3 from "@/assets/live-saenger3.jpg";
@@ -28,7 +29,7 @@ export interface Photo {
 export const heroPhoto = { src: live1, width: 1620, height: 1080 };
 export const heroVideoSrc = heroVideo;
 export const heroPosterSrc = heroPoster;
-export const aboutPhoto = { src: bandKomplett, width: 1517, height: 1083 };
+export const aboutPhoto = { src: bandKomplett3_2, width: 1360, height: 1920 };
 
 export const photos: Photo[] = [
   { src: live1, width: 1620, height: 1080, captionKey: "p1" },

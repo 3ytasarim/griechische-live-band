@@ -215,6 +215,26 @@
   }
 }
 
+.infinite-scroll {
+  animation: marquee 45s linear infinite;
+}
+
+.scroll-container {
+  mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.image-item {
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
 @keyframes glow-pulse {
   0%,
   100% {
@@ -233,5 +253,64 @@
   *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* --- Hero arka plan animasyonları --- */
+@keyframes hero-grid-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 64px 64px;
+  }
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: hero-grid-pan 18s linear infinite;
+  mask-image: radial-gradient(80% 70% at 50% 40%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, black 0%, transparent 100%);
+}
+
+@keyframes hero-sweep {
+  0% {
+    transform: translateX(0) skewX(-12deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(430%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+.hero-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 18%, transparent),
+    transparent
+  );
+  animation: hero-sweep 11s ease-in-out infinite;
+}
+
+@keyframes stage-beam {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: rotate(var(--beam-angle, 0deg)) scaleY(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: rotate(calc(var(--beam-angle, 0deg) + 4deg)) scaleY(1.06);
   }
 }

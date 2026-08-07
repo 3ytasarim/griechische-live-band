@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { SectionHeading } from "@/components/common/SectionHeading";
+import { FloatingBackground } from "@/components/common/FloatingBackground";
 import { memberPhotos } from "@/data/media";
 import { memberKeys } from "@/config/site";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -8,8 +9,9 @@ export function Members() {
   const { t } = useI18n();
 
   return (
-    <section id="band" className="border-t border-border bg-surface py-16 lg:py-24">
-      <div className="container-lux">
+    <section id="band" className="relative overflow-hidden border-t border-border bg-surface py-16 lg:py-24">
+      <FloatingBackground variant="dark" />
+      <div className="container-lux relative z-10">
         <SectionHeading
           eyebrow={t.members.eyebrow}
           title={t.members.title}

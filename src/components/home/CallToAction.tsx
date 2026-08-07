@@ -4,7 +4,7 @@ import { photos } from "@/data/media";
 import { Reveal } from "@/components/common/Reveal";
 import { site } from "@/config/site";
 import { useI18n } from "@/i18n/I18nProvider";
-import { btnGold, btnOutline } from "@/lib/ui";
+import { LiquidMetalShell } from "@/components/ui/liquid-metal-button";
 
 export function CallToAction() {
   const { t } = useI18n();
@@ -26,7 +26,7 @@ export function CallToAction() {
       <div className="container-lux py-20 text-center lg:py-28">
         <Reveal>
           <p className="eyebrow">{t.cta.eyebrow}</p>
-          <h2 className="mx-auto mt-6 max-w-3xl text-4xl leading-[1.08] font-semibold text-balance text-red sm:text-6xl">
+          <h2 className="mx-auto mt-6 max-w-3xl text-4xl leading-[1.08] font-semibold text-balance text-foreground sm:text-6xl">
             {t.cta.title}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -37,14 +37,18 @@ export function CallToAction() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className={btnGold}
+              className="inline-flex"
             >
-              <WhatsAppIcon className="h-4 w-4" />
-              {t.cta.whatsapp}
+              <LiquidMetalShell>
+                <WhatsAppIcon className="h-4 w-4" />
+                {t.cta.whatsapp}
+              </LiquidMetalShell>
             </a>
-            <a href={site.phoneHref} className={btnOutline}>
-              <Phone className="h-4 w-4" />
-              {t.cta.call}
+            <a href={site.phoneHref} className="inline-flex">
+              <LiquidMetalShell variant="outline">
+                <Phone className="h-4 w-4" />
+                {t.cta.call}
+              </LiquidMetalShell>
             </a>
           </div>
         </Reveal>

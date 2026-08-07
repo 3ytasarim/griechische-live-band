@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { MasonryGallery } from "@/components/gallery/MasonryGallery";
+import { ImageAutoSlider } from "@/components/ui/image-auto-slider";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { useI18n } from "@/i18n/I18nProvider";
-import { btnOutline } from "@/lib/ui";
+import { LiquidMetalShell } from "@/components/ui/liquid-metal-button";
 
 export function GalleryPreview() {
   const { t } = useI18n();
@@ -18,13 +18,15 @@ export function GalleryPreview() {
           subtitle={t.gallery.subtitle}
           align="center"
         />
-        <div className="mt-20">
-          <MasonryGallery limit={6} />
+        <div className="mt-16">
+          <ImageAutoSlider />
         </div>
         <Reveal className="mt-14 flex justify-center">
-          <Link to="/gallery" className={btnOutline}>
-            {t.gallery.viewAll}
-            <ArrowRight className="h-4 w-4" />
+          <Link to="/gallery" className="inline-flex">
+            <LiquidMetalShell variant="outline">
+              {t.gallery.viewAll}
+              <ArrowRight className="h-4 w-4" />
+            </LiquidMetalShell>
           </Link>
         </Reveal>
       </div>

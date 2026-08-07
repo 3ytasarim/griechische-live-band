@@ -44,6 +44,42 @@ const de = {
     bullet2: "Firmen- & Galaveranstaltungen",
     bullet3: "Festivals & Vereinsfeste",
     bullet4: "Deutschlandweit & europaweit",
+    cta: {
+      title: "Bereit für Ihren unvergesslichen Abend?",
+      subtitle: "Lassen Sie uns gemeinsam Ihre Feier planen.",
+      button: "Jetzt anfragen",
+    },
+    features: {
+      f1: {
+        title: "Live ohne Playback",
+        description:
+          "Jeder Ton kommt live von der Bühne — echte Instrumente, echte Stimmen, echte Energie.",
+      },
+      f2: {
+        title: "Profi-Musiker",
+        description:
+          "Ausgebildete Musiker mit jahrzehntelanger Bühnenerfahrung in ganz Europa.",
+      },
+      f3: {
+        title: "Programm nach Maß",
+        description:
+          "Wir stimmen Repertoire und Ablauf exakt auf Ihre Feier und Ihre Gäste ab.",
+      },
+      f4: {
+        title: "Große Bandbreite",
+        description:
+          "Von Epirus, Kreta und Pontos bis zu modernen Laiko- und Entechno-Hits.",
+      },
+      f5: {
+        title: "Technik inklusive",
+        description:
+          "Professionelle Beschallung und Bühnenlicht gehören selbstverständlich dazu.",
+      },
+      f6: {
+        title: "Mehrsprachig",
+        description: "Griechisch, deutsch, englisch und internationale Klassiker auf Wunsch.",
+      },
+    },
   },
   members: {
     eyebrow: "Die Band",
@@ -158,6 +194,27 @@ const de = {
     rights: "Alle Rechte vorbehalten.",
     imprint: "Impressum",
   },
+  faq: {
+    eyebrow: 'FAQ',
+    title: 'Häufige Fragen',
+    subtitle: 'Alles Wichtige zu Buchung, Ablauf und Technik auf einen Blick.',
+    q1: 'Wie läuft eine Buchung ab?',
+    a1: 'Sie senden uns Datum, Ort und Anlass per WhatsApp, Telefon oder Formular. Innerhalb von 24 Stunden erhalten Sie ein individuelles Angebot. Nach Ihrer Zusage reservieren wir den Termin verbindlich und stimmen alle Details in Ruhe mit Ihnen ab.',
+    q2: 'Wie viele Musiker treten auf?',
+    a2: 'Wir spielen je nach Anlass und Saalgröße in Besetzungen von 3 bis 8 Musikern — von Trio für kleinere Feiern bis zur kompletten Band mit Bouzouki, Klarinette, Violine, Keyboard, Percussion und Gesang.',
+    q3: 'Welche Musik spielen Sie?',
+    a3: 'Unser Repertoire umfasst über 500 Songs: traditionelle Musik aus Epirus, Kreta und Pontos, Rembetiko, Laiko, Entechno sowie moderne griechische Hits. Auf Wunsch ergänzen wir deutsche, englische und internationale Titel.',
+    q4: 'Wie lange spielen Sie an einem Abend?',
+    a4: 'Üblich sind vier bis fünf Stunden Live-Musik inklusive Pausen. Längere Auftritte sind jederzeit möglich und werden vorab im Angebot festgehalten.',
+    q5: 'Bringen Sie Technik und Licht mit?',
+    a5: 'Ja. Wir bringen professionelle Beschallung, Mischpult, Mikrofone und Bühnenlicht mit und übernehmen Aufbau, Soundcheck und Abbau komplett selbst.',
+    q6: 'In welchen Regionen treten Sie auf?',
+    a6: 'Wir spielen deutschlandweit und auch europaweit. Anfahrt und gegebenenfalls Übernachtung werden transparent im Angebot ausgewiesen.',
+    q7: 'Wie viel kostet eine griechische Live Band?',
+    a7: 'Der Preis richtet sich nach Besetzung, Spieldauer, Termin und Anfahrt. Sie erhalten immer ein festes Komplettangebot ohne versteckte Kosten.',
+    q8: 'Können wir Wunschlieder mitgeben?',
+    a8: 'Sehr gerne. Senden Sie uns Ihre Wunschliste — Hochzeitstanz, Familienlieder oder besondere Momente bereiten wir individuell vor.',
+  },
   seo: {
     homeTitle: "Griechische Live Band | Hochzeiten, Galas & Firmenfeiern",
     homeDesc:
@@ -210,6 +267,38 @@ const el: Dict = {
     bullet2: "Εταιρικές εκδηλώσεις & gala",
     bullet3: "Φεστιβάλ & συλλογικές γιορτές",
     bullet4: "Σε όλη τη Γερμανία & την Ευρώπη",
+    cta: {
+      title: "Έτοιμοι για μια αξέχαστη βραδιά;",
+      subtitle: "Ας σχεδιάσουμε μαζί τη γιορτή σας.",
+      button: "Κάντε κράτηση",
+    },
+    features: {
+      f1: {
+        title: "Ζωντανά, χωρίς playback",
+        description:
+          "Κάθε νότα παίζεται ζωντανά — αληθινά όργανα, αληθινές φωνές, αληθινή ενέργεια.",
+      },
+      f2: {
+        title: "Επαγγελματίες μουσικοί",
+        description: "Καταρτισμένοι μουσικοί με δεκαετίες εμπειρίας σε σκηνές της Ευρώπης.",
+      },
+      f3: {
+        title: "Πρόγραμμα στα μέτρα σας",
+        description: "Προσαρμόζουμε ρεπερτόριο και ροή στη δική σας εκδήλωση και στους καλεσμένους.",
+      },
+      f4: {
+        title: "Μεγάλο εύρος",
+        description: "Από Ήπειρο, Κρήτη και Πόντο έως σύγχρονα λαϊκά και έντεχνα.",
+      },
+      f5: {
+        title: "Εξοπλισμός",
+        description: "Επαγγελματικό ηχητικό και φωτισμός περιλαμβάνονται.",
+      },
+      f6: {
+        title: "Πολύγλωσσα",
+        description: "Ελληνικά, γερμανικά, αγγλικά και διεθνή κλασικά κατόπιν επιθυμίας.",
+      },
+    },
   },
   members: {
     eyebrow: "Η ορχήστρα",
@@ -323,6 +412,27 @@ const el: Dict = {
     rights: "Με επιφύλαξη παντός δικαιώματος.",
     imprint: "Νομικές πληροφορίες",
   },
+  faq: {
+    eyebrow: 'Συχνές ερωτήσεις',
+    title: 'Συχνές ερωτήσεις',
+    subtitle: 'Όλα όσα χρειάζεται να ξέρετε για κρατήσεις, ρεπερτόριο και εξοπλισμό.',
+    q1: 'Πώς γίνεται η κράτηση;',
+    a1: 'Μας στέλνετε ημερομηνία, τόπο και είδος εκδήλωσης μέσω WhatsApp, τηλεφώνου ή φόρμας. Μέσα σε 24 ώρες λαμβάνετε εξατομικευμένη προσφορά και μετά την έγκρισή σας κρατάμε την ημερομηνία.',
+    q2: 'Πόσοι μουσικοί εμφανίζονται;',
+    a2: 'Ανάλογα με την εκδήλωση παίζουμε από 3 έως 8 μουσικούς — από τρίο έως πλήρες σχήμα με μπουζούκι, κλαρίνο, βιολί, πλήκτρα, κρουστά και φωνή.',
+    q3: 'Τι μουσική παίζετε;',
+    a3: 'Πάνω από 500 τραγούδια: παραδοσιακά Ηπείρου, Κρήτης και Πόντου, ρεμπέτικα, λαϊκά, έντεχνα και σύγχρονες επιτυχίες. Προαιρετικά και γερμανικά, αγγλικά ή διεθνή κομμάτια.',
+    q4: 'Πόση ώρα παίζετε;',
+    a4: 'Συνήθως τέσσερις έως πέντε ώρες ζωντανής μουσικής με διαλείμματα. Μεγαλύτερη διάρκεια είναι πάντα εφικτή κατόπιν συνεννόησης.',
+    q5: 'Φέρνετε ηχητικά και φωτισμό;',
+    a5: 'Ναι. Διαθέτουμε επαγγελματικό ηχητικό σύστημα, κονσόλα, μικρόφωνα και φωτισμό σκηνής, και αναλαμβάνουμε πλήρως στήσιμο και αποξήλωση.',
+    q6: 'Σε ποιες περιοχές εμφανίζεστε;',
+    a6: 'Σε όλη τη Γερμανία και σε ολόκληρη την Ευρώπη. Τα έξοδα μετακίνησης και διαμονής αναγράφονται καθαρά στην προσφορά.',
+    q7: 'Πόσο κοστίζει μια ελληνική ορχήστρα;',
+    a7: 'Η τιμή εξαρτάται από το σχήμα, τη διάρκεια, την ημερομηνία και την απόσταση. Λαμβάνετε πάντα σταθερή συνολική προσφορά χωρίς κρυφές χρεώσεις.',
+    q8: 'Μπορούμε να ζητήσουμε συγκεκριμένα τραγούδια;',
+    a8: 'Φυσικά. Στείλτε μας τη λίστα σας — πρώτος χορός, οικογενειακά τραγούδια ή ξεχωριστές στιγμές προετοιμάζονται ειδικά για εσάς.',
+  },
   seo: {
     homeTitle: "Ελληνική Ζωντανή Ορχήστρα | Γάμοι, Gala & Εκδηλώσεις",
     homeDesc:
@@ -371,6 +481,38 @@ const en: Dict = {
     bullet2: "Corporate events & galas",
     bullet3: "Festivals & community celebrations",
     bullet4: "Available across Germany & Europe",
+    cta: {
+      title: "Ready for an unforgettable evening?",
+      subtitle: "Let's plan your celebration together.",
+      button: "Book the band",
+    },
+    features: {
+      f1: {
+        title: "Fully live, no playback",
+        description:
+          "Every note is played live — real instruments, real voices, real energy.",
+      },
+      f2: {
+        title: "Professional musicians",
+        description: "Trained musicians with decades of stage experience across Europe.",
+      },
+      f3: {
+        title: "Tailored programme",
+        description: "We shape repertoire and flow precisely around your event and your guests.",
+      },
+      f4: {
+        title: "Wide repertoire",
+        description: "From Epirus, Crete and Pontos to modern laiko and entechno hits.",
+      },
+      f5: {
+        title: "Sound & light included",
+        description: "Professional PA and stage lighting always come as part of the package.",
+      },
+      f6: {
+        title: "Multilingual",
+        description: "Greek, German, English and international classics on request.",
+      },
+    },
   },
   members: {
     eyebrow: "The band",
@@ -483,6 +625,27 @@ const en: Dict = {
     language: "Language",
     rights: "All rights reserved.",
     imprint: "Legal notice",
+  },
+  faq: {
+    eyebrow: 'FAQ',
+    title: 'Frequently asked questions',
+    subtitle: 'Everything you need to know about booking, repertoire and equipment.',
+    q1: 'How does booking work?',
+    a1: 'Send us your date, venue and occasion via WhatsApp, phone or the contact form. You will receive a tailored quote within 24 hours, and once you confirm we reserve the date for you.',
+    q2: 'How many musicians perform?',
+    a2: 'Depending on the event we perform with 3 to 8 musicians — from a trio for smaller celebrations to the full band with bouzouki, clarinet, violin, keys, percussion and vocals.',
+    q3: 'What kind of music do you play?',
+    a3: 'Our repertoire covers more than 500 songs: traditional music from Epirus, Crete and Pontos, rembetiko, laiko, entechno and modern Greek hits, plus German, English and international songs on request.',
+    q4: 'How long do you play?',
+    a4: 'A typical evening includes four to five hours of live music with breaks. Longer sets are always possible and are agreed in advance.',
+    q5: 'Do you bring sound and lighting?',
+    a5: 'Yes. We bring professional PA, mixing desk, microphones and stage lighting, and we handle setup, soundcheck and teardown ourselves.',
+    q6: 'Where do you perform?',
+    a6: 'We perform throughout Germany and across Europe. Travel and accommodation costs are always listed transparently in the quote.',
+    q7: 'What does a Greek live band cost?',
+    a7: 'Pricing depends on line-up, playing time, date and travel distance. You always receive a fixed all-in quote with no hidden fees.',
+    q8: 'Can we request specific songs?',
+    a8: 'Absolutely. Send us your wish list — first dance, family favourites or special moments are prepared individually for your event.',
   },
   seo: {
     homeTitle: "Greek Live Band | Weddings, Galas & Corporate Events",

@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/home/Hero";
-import { About } from "@/components/home/About";
+import AboutUsSection from "@/components/ui/about-us-section";
 import { Members } from "@/components/home/Members";
 import { Instruments } from "@/components/home/Instruments";
 import { GalleryPreview } from "@/components/home/GalleryPreview";
+import { Faq } from "@/components/home/Faq";
 import { CallToAction } from "@/components/home/CallToAction";
 
 export const Route = createFileRoute("/")({
@@ -37,11 +38,12 @@ function Index() {
     <>
       <h1 className="sr-only">Professionelle griechische Live Band für Hochzeiten und Galas</h1>
       <Hero />
-      <About />
+      <AboutUsSection />
       <Members />
       <Instruments />
       <GalleryPreview />
       <CallToAction />
+      <Faq />
     </>
   );
 }

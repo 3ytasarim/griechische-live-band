@@ -1,18 +1,17 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, Globe, Check, Home, Image, Phone } from "lucide-react";
+import { Menu, X, Globe, Check, Home, Images, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { languageLabels, languages, type Language } from "@/i18n/translations";
 import { site } from "@/config/site";
 import logoDark from "@/assets/logo-dark.png";
-import { btnGold } from "@/lib/ui";
-import { NavBar as TubelightNavBar } from "@/components/ui/tubelight-navbar";
-import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
+import { LiquidMetalShell } from "@/components/ui/liquid-metal-button";
+import { NavBar as TubelightNav } from "@/components/ui/tubelight-navbar";
+
 
 export function Navbar() {
   const { t, lang, setLang } = useI18n();
-  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -37,12 +36,6 @@ export function Navbar() {
     { to: "/contact", label: t.nav.contact },
   ] as const;
 
-  const tubelightItems = [
-    { name: t.nav.home, url: "/", icon: Home },
-    { name: t.nav.gallery, url: "/gallery", icon: Image },
-    { name: t.nav.contact, url: "/contact", icon: Phone },
-  ];
-
   const pick = (l: Language) => {
     setLang(l);
     setLangOpen(false);
@@ -54,11 +47,7 @@ export function Navbar() {
         scrolled ? "py-3 shadow-sm" : "py-5"
       }`}
     >
-      <div className="container-lux relative flex items-center justify-between gap-6">
-        <TubelightNavBar
-          items={tubelightItems}
-          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block"
-        />
+      <div className="container-lux flex items-center justify-between gap-6">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
           <span className="flex items-center rounded-xl bg-white px-2 py-1 transition-transform group-hover:scale-[1.03]">
             <img
@@ -70,6 +59,17 @@ export function Navbar() {
             />
           </span>
         </Link>
+
+        <nav className="hidden lg:flex">
+          <TubelightNav
+            items={[
+              { name: t.nav.home, url: "/", icon: Home },
+              { name: t.nav.gallery, url: "/gallery", icon: Images },
+              { name: t.nav.contact, url: "/contact", icon: Mail },
+            ]}
+          />
+        </nav>
+
 
         <div className="hidden items-center gap-4 lg:flex">
           <div className="relative">
@@ -106,7 +106,9 @@ export function Navbar() {
               ) : null}
             </AnimatePresence>
           </div>
-          <LiquidMetalButton label={t.nav.cta} tone="red" onClick={() => navigate({ to: "/contact" })} />
+          <Link to="/contact" className="inline-flex">
+            <LiquidMetalShell size="sm">{t.nav.cta}</LiquidMetalShell>
+          </Link>
         </div>
 
         <button
@@ -156,8 +158,8 @@ export function Navbar() {
                 </button>
               ))}
             </div>
-            <Link to="/contact" onClick={() => setOpen(false)} className={`${btnGold} mt-8 w-full`}>
-              {t.nav.cta}
+            <Link to="/contact" onClick={() => setOpen(false)} className="mt-8 flex w-full">
+              <LiquidMetalShell className="w-full">{t.nav.cta}</LiquidMetalShell>
             </Link>
           </motion.div>
         ) : null}

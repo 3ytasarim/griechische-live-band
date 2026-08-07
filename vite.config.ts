@@ -12,10 +12,4 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: {
-    server: {
-      // Allow access via the Cloudflare quick-tunnel used for temporary preview sharing.
-      allowedHosts: [".trycloudflare.com"],
-    },
-  },
 });

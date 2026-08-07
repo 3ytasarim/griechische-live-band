@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { StickyContact } from "@/components/common/StickyContact";
 
 function NotFoundComponent() {
   return (
@@ -149,6 +150,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <StickyContact />
       </I18nProvider>
     </QueryClientProvider>
   );

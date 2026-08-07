@@ -10,7 +10,13 @@ interface I18nValue {
   t: Translation;
 }
 
-const I18nContext = createContext<I18nValue | null>(null);
+const fallbackValue: I18nValue = {
+  lang: DEFAULT_LANGUAGE,
+  setLang: () => {},
+  t: resources[DEFAULT_LANGUAGE],
+};
+
+const I18nContext = createContext<I18nValue>(fallbackValue);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Language>(DEFAULT_LANGUAGE);
@@ -42,7 +48,5 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useI18n() {
-  const ctx = useContext(I18nContext);
-  if (!ctx) throw new Error("useI18n must be used within I18nProvider");
-  return ctx;
+  return useContext(I18nContext) ?? fallbackValue;
 }

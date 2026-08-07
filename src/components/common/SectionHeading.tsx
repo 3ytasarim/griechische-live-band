@@ -15,7 +15,7 @@ export function SectionHeading({
   return (
     <Reveal className={isCenter ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-5 text-4xl leading-[1.08] font-semibold text-balance text-red sm:text-5xl">
+      <h2 className="mt-5 text-4xl leading-[1.08] font-semibold text-balance text-foreground sm:text-5xl">
         {title}
       </h2>
       {subtitle ? (

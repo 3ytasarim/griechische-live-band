@@ -5,6 +5,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 import { languageLabels, languages } from "@/i18n/translations";
 import { site } from "@/config/site";
 import logoNegative from "@/assets/logo-negative.png";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 function Marquee() {
   const text = "GRIECHISCHEBAND.DE";
@@ -32,10 +33,24 @@ export function Footer() {
   const { t, lang, setLang } = useI18n();
 
   return (
-    <footer className="mt-10 overflow-hidden rounded-t-[2.5rem] bg-black text-white md:mt-14">
+    <footer className="relative mt-10 overflow-hidden rounded-t-[2.5rem] bg-black text-white md:mt-14">
       <Marquee />
 
-      <div className="container-lux grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="pointer-events-none absolute inset-x-0 top-12 bottom-0 z-0">
+        <SparklesCore
+          id="footer-sparkles"
+          background="transparent"
+          minSize={0.5}
+          maxSize={1.4}
+          particleDensity={70}
+          speed={2}
+          particleColor="#ffffff"
+          className="h-full w-full"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,black_85%)]" />
+      </div>
+
+      <div className="container-lux relative z-10 grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <img
             src={logoNegative}
@@ -123,7 +138,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="relative z-10 border-t border-white/10">
         <div className="container-lux flex flex-col gap-3 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name}. {t.footer.rights}

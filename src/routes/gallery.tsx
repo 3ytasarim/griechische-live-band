@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MasonryGallery } from "@/components/gallery/MasonryGallery";
+import { useEffect, useMemo, useState } from "react";
+import SphereImageGrid, { type ImageData } from "@/components/ui/img-sphere";
+import { photos } from "@/data/media";
 import { CallToAction } from "@/components/home/CallToAction";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -28,6 +30,28 @@ export const Route = createFileRoute("/gallery")({
 
 function GalleryPage() {
   const { t } = useI18n();
+  const [size, setSize] = useState(600);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setSize(Math.max(320, Math.min(720, w - 48)));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const images: ImageData[] = useMemo(
+    () =>
+      photos.map((photo, i) => ({
+        id: `photo-${i}`,
+        src: photo.src,
+        alt: t.gallery.photos[photo.captionKey],
+        title: t.gallery.photos[photo.captionKey],
+      })),
+    [t],
+  );
 
   return (
     <>
@@ -40,9 +64,16 @@ function GalleryPage() {
           />
         </div>
       </section>
-      <section className="py-20 lg:py-28">
-        <div className="container-lux">
-          <MasonryGallery />
+      <section className="py-16 lg:py-24">
+        <div className="container-lux flex justify-center">
+          <SphereImageGrid
+            images={images}
+            containerSize={size}
+            sphereRadius={size * 0.36}
+            baseImageScale={0.17}
+            autoRotate
+            autoRotateSpeed={0.2}
+          />
         </div>
       </section>
       <CallToAction />
