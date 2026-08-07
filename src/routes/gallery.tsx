@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import SphereImageGrid, { type ImageData } from "@/components/ui/img-sphere";
 import { HeroSection } from "@/components/ui/hero-section-9";
+import { GalleryVideo } from "@/components/gallery/GalleryVideo";
 import { photos } from "@/data/media";
 import { CallToAction } from "@/components/home/CallToAction";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -67,6 +68,7 @@ function GalleryPage() {
         subtitle={t.gallery.subtitle}
         images={[photos[0]!.src, photos[3]!.src, photos[8]!.src]}
       />
+      <GalleryVideo />
       <section className="py-16 lg:py-24">
         <div className="container-lux flex justify-center">
           <SphereImageGrid
