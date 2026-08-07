@@ -4,6 +4,7 @@ import SphereImageGrid, { type ImageData } from "@/components/ui/img-sphere";
 import { HeroSection } from "@/components/ui/hero-section-9";
 import { GalleryVideo } from "@/components/gallery/GalleryVideo";
 import { MeshGradientBackground } from "@/components/ui/mesh-gradient-background";
+import { AnimatedEdgeLines } from "@/components/ui/animated-edge-lines";
 import { photos } from "@/data/media";
 import { CallToAction } from "@/components/home/CallToAction";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -72,6 +73,7 @@ function GalleryPage() {
       <GalleryVideo />
       <section className="relative overflow-hidden py-16 lg:py-24">
         <MeshGradientBackground className="absolute inset-0 opacity-40" />
+        <AnimatedEdgeLines />
         <div className="container-lux relative flex justify-center">
           <SphereImageGrid
             images={images}
