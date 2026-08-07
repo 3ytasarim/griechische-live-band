@@ -93,7 +93,7 @@ export default function OrbitingCirclesGlobe() {
                 }
               >
                 <div
-                  className="relative z-10 -mt-8 rounded-full border border-border bg-background p-3 sm:p-4"
+                  className="relative z-10 -mt-8 h-14 w-14 overflow-hidden rounded-full border border-border bg-background md:h-16 md:w-16"
                   style={
                     {
                       "--counter-offset": `${-iconData.angle}deg`,
@@ -104,9 +104,9 @@ export default function OrbitingCirclesGlobe() {
                   <img
                     src={iconData.src}
                     alt={iconData.alt}
-                    width={32}
-                    height={32}
-                    className="h-6 w-6 rounded-full object-cover md:h-8 md:w-8"
+                    width={64}
+                    height={64}
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </div>
