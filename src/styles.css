@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Greek Live Band" premium dark luxury theme.
- * Deep navy backgrounds, gold accent, elegant modern typography.
+ * Design system — "Greek Live Band" premium theme.
+ * Black / White / Red palette, elegant modern typography.
  * All colors are oklch tokens. Never hardcode colors in components.
  */
 
@@ -19,7 +19,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
 
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Poppins", ui-sans-serif, system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -69,13 +69,13 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0 0);
 
-  /* Accent Gold #D9B55A */
-  --primary: oklch(0.79 0.106 88);
-  --primary-foreground: oklch(0.12 0 0);
-  --gold: oklch(0.79 0.106 88);
-  --gold-soft: oklch(0.88 0.062 90);
-  /* Red */
+  /* Brand: Black / White / Red — no gold. --gold(-soft) are kept as aliases
+     onto red so any leftover gold-named references stay on-brand. */
   --red: oklch(0.58 0.24 25);
+  --primary: var(--red);
+  --primary-foreground: oklch(1 0 0);
+  --gold: var(--red);
+  --gold-soft: oklch(0.68 0.19 25);
 
   --secondary: oklch(0.94 0.003 260);
   --secondary-foreground: oklch(0.12 0 0);

@@ -35,7 +35,7 @@ const canvasStyle = `
     transparent 0deg,
     transparent 205deg,
     var(--red) 248deg,
-    var(--gold) 286deg,
+    white 286deg,
     var(--red) 318deg,
     transparent 360deg
   );

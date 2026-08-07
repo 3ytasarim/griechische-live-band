@@ -45,7 +45,7 @@ function HeroBackdrop() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 18% 12%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 65%), " +
+            "radial-gradient(ellipse 60% 50% at 18% 12%, color-mix(in oklab, black 14%, transparent), transparent 65%), " +
             "radial-gradient(ellipse 55% 50% at 88% 90%, color-mix(in oklab, var(--red) 16%, transparent), transparent 65%)",
         }}
       />
@@ -197,9 +197,9 @@ export function HeroSection({ eyebrow, title, subtitle, images, className }: Her
           initial="hidden"
           animate="visible"
         >
-          {/* Dekoratif şekiller — site renkleri */}
+          {/* Dekoratif şekiller — siyah/beyaz/kırmızı */}
           <motion.div
-            className="absolute -top-4 left-1/4 h-16 w-16 rounded-full bg-[var(--gold)]/25"
+            className="absolute -top-4 left-1/4 h-16 w-16 rounded-full bg-black/10"
             variants={floatingVariants}
             animate="animate"
           />
@@ -210,7 +210,7 @@ export function HeroSection({ eyebrow, title, subtitle, images, className }: Her
             style={{ transitionDelay: "0.5s" }}
           />
           <motion.div
-            className="absolute bottom-1/4 left-4 h-6 w-6 rounded-full bg-[var(--gold)]/30"
+            className="absolute bottom-1/4 left-4 h-6 w-6 rounded-full border-2 border-white bg-white/40 shadow-md"
             variants={floatingVariants}
             animate="animate"
             style={{ transitionDelay: "1s" }}

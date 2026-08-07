@@ -252,19 +252,19 @@ void main() {
 }
 `;
 
-// Site-brand palette: deep shadow -> muted red -> soft gold -> warm cream.
+// Site-brand palette: deep shadow -> muted red -> soft gray -> white.
 // Lower intensity/saturation/contrast than the 21st.dev preset so it reads
 // as a soft, "belli ama yoğun değil" wash rather than a loud gradient.
 const UNIFORMS = {
   colors: [
     [0.04, 0.015, 0.015],
     [0.65, 0.16, 0.14],
-    [0.85, 0.71, 0.35],
-    [0.97, 0.94, 0.86],
-    [0.97, 0.94, 0.86],
-    [0.97, 0.94, 0.86],
-    [0.97, 0.94, 0.86],
-    [0.97, 0.94, 0.86],
+    [0.88, 0.88, 0.88],
+    [0.98, 0.98, 0.98],
+    [0.98, 0.98, 0.98],
+    [0.98, 0.98, 0.98],
+    [0.98, 0.98, 0.98],
+    [0.98, 0.98, 0.98],
   ] as [number, number, number][],
   colorCount: 4,
   scale: 1.3,

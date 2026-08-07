@@ -28,7 +28,7 @@ export function AnimatedEdgeLines({ className }: AnimatedEdgeLinesProps) {
             className="absolute inset-x-0 h-full"
             style={{
               background:
-                "linear-gradient(180deg, transparent 0%, var(--gold) 20%, var(--red) 50%, var(--gold) 80%, transparent 100%)",
+                "linear-gradient(180deg, transparent 0%, var(--red) 20%, white 50%, var(--red) 80%, transparent 100%)",
               animation: `edge-line-sweep ${line.duration}s linear infinite`,
               animationDelay: `${line.delay}s`,
             }}

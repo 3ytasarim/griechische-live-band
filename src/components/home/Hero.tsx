@@ -122,7 +122,7 @@ export function Hero() {
               className="pointer-events-none absolute -top-24 left-6 h-[26rem] w-40 origin-top blur-2xl [--beam-angle:14deg]"
               style={{
                 background:
-                  "linear-gradient(to bottom, color-mix(in oklab, var(--gold) 55%, transparent), transparent 75%)",
+                  "linear-gradient(to bottom, color-mix(in oklab, white 55%, transparent), transparent 75%)",
                 clipPath: "polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%)",
                 animation: "stage-beam 7s ease-in-out infinite",
               }}
