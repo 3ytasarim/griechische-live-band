@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import SphereImageGrid, { type ImageData } from "@/components/ui/img-sphere";
+import { HeroSection } from "@/components/ui/hero-section-9";
 import { photos } from "@/data/media";
 import { CallToAction } from "@/components/home/CallToAction";
-import { SectionHeading } from "@/components/common/SectionHeading";
 import { useI18n } from "@/i18n/I18nProvider";
+
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -28,9 +29,11 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
+
 function GalleryPage() {
   const { t } = useI18n();
   const [size, setSize] = useState(600);
+
 
   useEffect(() => {
     const update = () => {
@@ -41,6 +44,7 @@ function GalleryPage() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
 
   const images: ImageData[] = useMemo(
     () =>
@@ -53,17 +57,16 @@ function GalleryPage() {
     [t],
   );
 
+
   return (
     <>
-      <section className="border-b border-border pt-44 pb-20 lg:pt-52">
-        <div className="container-lux">
-          <SectionHeading
-            eyebrow={t.gallery.eyebrow}
-            title={t.gallery.title}
-            subtitle={t.gallery.subtitle}
-          />
-        </div>
-      </section>
+      <HeroSection
+        className="border-b border-border pt-44 pb-20 lg:pt-52"
+        eyebrow={t.gallery.eyebrow}
+        title={t.gallery.title}
+        subtitle={t.gallery.subtitle}
+        images={[photos[0]!.src, photos[3]!.src, photos[8]!.src]}
+      />
       <section className="py-16 lg:py-24">
         <div className="container-lux flex justify-center">
           <SphereImageGrid
@@ -80,3 +83,4 @@ function GalleryPage() {
     </>
   );
 }
+
