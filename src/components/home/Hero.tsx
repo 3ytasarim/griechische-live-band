@@ -40,7 +40,7 @@ export function Hero() {
     <section ref={ref} className="relative overflow-hidden">
       <HeroBackground />
 
-      <div className="container-lux relative z-10 grid items-center gap-14 pb-28 pt-28 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-36 lg:pt-36">
+      <div className="container-lux relative z-10 grid items-start gap-14 pb-28 pt-28 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-36 lg:pt-36">
         {/* Sol: metin */}
         <div className="min-w-0 text-center text-white lg:text-left">
           <motion.div
