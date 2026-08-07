@@ -107,15 +107,6 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 const imageVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
@@ -139,32 +130,65 @@ export function HeroSection({ eyebrow, title, subtitle, images, className }: Her
       <HeroBackdrop />
       <div className="container-lux relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
         {/* Sol: metin (ortalı) */}
-        <motion.div
-          className="flex flex-col items-center text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="flex flex-col items-center text-center">
           {eyebrow ? (
-            <motion.p className="eyebrow" variants={itemVariants}>
-              {eyebrow}
-            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2.5 rounded-full border border-[var(--red)]/25 bg-[var(--red)]/8 px-4 py-1.5"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--red)] opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--red)]" />
+              </span>
+              <span className="eyebrow">{eyebrow}</span>
+            </motion.div>
           ) : null}
-          <motion.h1
-            className="mt-5 text-4xl leading-[1.08] font-semibold text-balance text-foreground sm:text-5xl"
-            variants={itemVariants}
-          >
-            {title}
-          </motion.h1>
+
+          <h1 className="mt-6 flex flex-wrap justify-center gap-x-3 text-5xl leading-[1.05] font-bold text-balance sm:text-6xl lg:text-7xl">
+            {typeof title === "string" ? (
+              title.split(" ").map((word, i) => (
+                <motion.span
+                  key={`${word}-${i}`}
+                  initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 0.8, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-gradient-gold inline-block"
+                >
+                  {word}
+                </motion.span>
+              ))
+            ) : (
+              <motion.span
+                initial={{ opacity: 0, y: 34, filter: "blur(12px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-gradient-gold inline-block"
+              >
+                {title}
+              </motion.span>
+            )}
+          </h1>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-7 h-[3px] w-24 origin-center rounded-full bg-[var(--red)]"
+          />
+
           {subtitle ? (
             <motion.p
-              className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.9, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               {subtitle}
             </motion.p>
           ) : null}
-        </motion.div>
+        </div>
 
         {/* Sağ: fotoğraf kolajı */}
         <motion.div
