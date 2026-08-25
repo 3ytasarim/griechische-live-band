@@ -30,3 +30,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Large local-only asset (uploaded to a bucket separately, referenced by URL later)
+src/assets/Empnefsi Live Music Romania Fine Clip - 4K.mov
