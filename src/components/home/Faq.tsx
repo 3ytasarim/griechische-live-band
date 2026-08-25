@@ -19,6 +19,8 @@ export function Faq() {
     { value: "q6", trigger: f.q6, content: f.a6 },
     { value: "q7", trigger: f.q7, content: f.a7 },
     { value: "q8", trigger: f.q8, content: f.a8 },
+    { value: "q9", trigger: f.q9, content: f.a9 },
+    { value: "q10", trigger: f.q10, content: f.a10 },
   ];
 
   const jsonLd = {

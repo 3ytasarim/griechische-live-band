@@ -7,8 +7,12 @@ interface HeroSectionProps {
   eyebrow?: string;
   title: React.ReactNode;
   subtitle?: string;
-  images: string[];
+  images?: string[];
+  /** Custom right-side content, replaces the built-in photo collage when provided. */
+  rightSlot?: React.ReactNode;
   className?: string;
+  /** Rising quaver notes over the color wash. Defaults to true. */
+  showNotes?: boolean;
 }
 
 interface NoteItem {
@@ -37,8 +41,8 @@ const notes: NoteItem[] = Array.from({ length: 22 }, (_, i) => {
   };
 });
 
-/** Rising quaver notes + a soft red/gold color wash, so the hero doesn't feel empty. */
-function HeroBackdrop() {
+/** Soft red/gold color wash, optionally with rising quaver notes, so the hero doesn't feel empty. */
+function HeroBackdrop({ showNotes = true }: { showNotes?: boolean }) {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
@@ -49,7 +53,7 @@ function HeroBackdrop() {
             "radial-gradient(ellipse 55% 50% at 88% 90%, color-mix(in oklab, var(--red) 16%, transparent), transparent 65%)",
         }}
       />
-      {notes.map((n, i) => (
+      {showNotes && notes.map((n, i) => (
         <motion.span
           key={i}
           className={`absolute bottom-0 text-instrument-${n.colorIndex}`}
@@ -124,11 +128,25 @@ const floatingVariants = {
 };
 
 /** Split hero: centered title/subtitle on the left, a proportioned photo collage on the right. */
-export function HeroSection({ eyebrow, title, subtitle, images, className }: HeroSectionProps) {
+export function HeroSection({
+  eyebrow,
+  title,
+  subtitle,
+  images,
+  rightSlot,
+  className,
+  showNotes = true,
+}: HeroSectionProps) {
+  const hasRightContent = rightSlot || (images && images.length > 0);
   return (
     <section className={cn("relative w-full overflow-hidden", className)}>
-      <HeroBackdrop />
-      <div className="container-lux relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+      <HeroBackdrop showNotes={showNotes} />
+      <div
+        className={cn(
+          "container-lux relative grid grid-cols-1 items-center gap-12",
+          hasRightContent ? "lg:grid-cols-2 lg:gap-8" : "justify-items-center",
+        )}
+      >
         {/* Sol: metin (ortalı) */}
         <div className="flex flex-col items-center text-center">
           {eyebrow ? (
@@ -190,70 +208,81 @@ export function HeroSection({ eyebrow, title, subtitle, images, className }: Her
           ) : null}
         </div>
 
-        {/* Sağ: fotoğraf kolajı */}
-        <motion.div
-          className="relative h-[400px] w-full sm:h-[500px]"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Dekoratif şekiller — siyah/beyaz/kırmızı */}
+        {/* Sağ: özel içerik veya fotoğraf kolajı */}
+        {rightSlot ? (
           <motion.div
-            className="absolute -top-4 left-1/4 h-16 w-16 rounded-full bg-black/10"
-            variants={floatingVariants}
-            animate="animate"
-          />
+            className="relative flex w-full justify-center"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {rightSlot}
+          </motion.div>
+        ) : images && images.length > 0 ? (
           <motion.div
-            className="absolute right-1/4 bottom-0 h-12 w-12 rounded-lg bg-[var(--red)]/20"
-            variants={floatingVariants}
-            animate="animate"
-            style={{ transitionDelay: "0.5s" }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 left-4 h-6 w-6 rounded-full border-2 border-white bg-white/40 shadow-md"
-            variants={floatingVariants}
-            animate="animate"
-            style={{ transitionDelay: "1s" }}
-          />
+            className="relative h-[400px] w-full sm:h-[500px]"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Dekoratif şekiller — siyah/beyaz/kırmızı */}
+            <motion.div
+              className="absolute -top-4 left-1/4 h-16 w-16 rounded-full bg-black/10"
+              variants={floatingVariants}
+              animate="animate"
+            />
+            <motion.div
+              className="absolute right-1/4 bottom-0 h-12 w-12 rounded-lg bg-[var(--red)]/20"
+              variants={floatingVariants}
+              animate="animate"
+              style={{ transitionDelay: "0.5s" }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-4 h-6 w-6 rounded-full border-2 border-white bg-white/40 shadow-md"
+              variants={floatingVariants}
+              animate="animate"
+              style={{ transitionDelay: "1s" }}
+            />
 
-          {/* Fotoğraflar */}
-          <motion.div
-            className="absolute top-0 left-1/2 h-48 w-48 -translate-x-1/2 rounded-2xl bg-muted p-2 shadow-lg sm:h-64 sm:w-64"
-            style={{ transformOrigin: "bottom center" }}
-            variants={imageVariants}
-          >
-            <img
-              src={images[0]}
-              alt=""
-              className="h-full w-full rounded-xl object-cover"
-              loading="lazy"
-            />
+            {/* Fotoğraflar */}
+            <motion.div
+              className="absolute top-0 left-1/2 h-48 w-48 -translate-x-1/2 rounded-2xl bg-muted p-2 shadow-lg sm:h-64 sm:w-64"
+              style={{ transformOrigin: "bottom center" }}
+              variants={imageVariants}
+            >
+              <img
+                src={images[0]}
+                alt=""
+                className="h-full w-full rounded-xl object-cover"
+                loading="lazy"
+              />
+            </motion.div>
+            <motion.div
+              className="absolute top-1/3 right-0 h-40 w-40 rounded-2xl bg-muted p-2 shadow-lg sm:h-56 sm:w-56"
+              style={{ transformOrigin: "left center" }}
+              variants={imageVariants}
+            >
+              <img
+                src={images[1]}
+                alt=""
+                className="h-full w-full rounded-xl object-cover"
+                loading="lazy"
+              />
+            </motion.div>
+            <motion.div
+              className="absolute bottom-0 left-0 h-32 w-32 rounded-2xl bg-muted p-2 shadow-lg sm:h-48 sm:w-48"
+              style={{ transformOrigin: "top right" }}
+              variants={imageVariants}
+            >
+              <img
+                src={images[2]}
+                alt=""
+                className="h-full w-full rounded-xl object-cover"
+                loading="lazy"
+              />
+            </motion.div>
           </motion.div>
-          <motion.div
-            className="absolute top-1/3 right-0 h-40 w-40 rounded-2xl bg-muted p-2 shadow-lg sm:h-56 sm:w-56"
-            style={{ transformOrigin: "left center" }}
-            variants={imageVariants}
-          >
-            <img
-              src={images[1]}
-              alt=""
-              className="h-full w-full rounded-xl object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="absolute bottom-0 left-0 h-32 w-32 rounded-2xl bg-muted p-2 shadow-lg sm:h-48 sm:w-48"
-            style={{ transformOrigin: "top right" }}
-            variants={imageVariants}
-          >
-            <img
-              src={images[2]}
-              alt=""
-              className="h-full w-full rounded-xl object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-        </motion.div>
+        ) : null}
       </div>
     </section>
   );

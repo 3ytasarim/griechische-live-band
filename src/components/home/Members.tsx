@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { SectionHeading } from "@/components/common/SectionHeading";
 import { FloatingBackground } from "@/components/common/FloatingBackground";
 import { memberPhotos } from "@/data/media";
@@ -18,19 +17,14 @@ export function Members() {
           subtitle={t.members.subtitle}
           align="center"
         />
+      </div>
 
-        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {memberKeys.map((key, i) => {
+      <div className="relative z-10 mx-auto mt-20 max-w-[96rem] px-6 lg:px-12">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          {memberKeys.map((key) => {
             const member = t.members[key];
             return (
-              <motion.article
-                key={key}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative overflow-hidden rounded-md border border-border"
-              >
+              <article key={key} className="relative overflow-hidden rounded-md border border-border">
                 <img
                   src={memberPhotos[key]}
                   alt={`${member.name} — ${member.role}`}
@@ -38,24 +32,19 @@ export function Members() {
                   height={1100}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[3/4] w-full object-cover transition-transform duration-[900ms] ease-[var(--ease-lux)] group-hover:scale-105"
+                  className="aspect-[3/4] w-full object-cover"
                 />
-                {/* Alt bilgi paneli: kayarak açılan koyu cam panel */}
-                <div className="absolute inset-x-0 bottom-0 translate-y-0 p-4">
-                  <div className="rounded-md border border-white/15 bg-black/55 p-4 backdrop-blur-md transition-all duration-500 ease-[var(--ease-lux)] group-hover:bg-black/70">
-                    <p className="text-[0.68rem] font-semibold tracking-[0.28em] text-red uppercase">
-                      {member.role}
-                    </p>
-                    <h3 className="mt-1.5 font-display text-xl font-semibold text-white">
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <div className="rounded-md border border-white/15 bg-black/55 p-4 backdrop-blur-md">
+                    <h3 className="font-display text-xl font-semibold text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
                       {member.name}
                     </h3>
-                    <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-white/80 opacity-0 transition-all duration-500 group-hover:mt-3 group-hover:max-h-40 group-hover:opacity-100">
-                      {member.bio}
+                    <p className="mt-1.5 text-[0.68rem] font-semibold tracking-[0.28em] text-red uppercase">
+                      {member.role}
                     </p>
                   </div>
                 </div>
-
-              </motion.article>
+              </article>
             );
           })}
         </div>

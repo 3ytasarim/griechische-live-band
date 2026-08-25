@@ -49,7 +49,7 @@ export function StickyContact() {
           >
             <CalendarCheck className="h-5 w-5 shrink-0" />
           </motion.span>
-          <span className="hidden sm:inline">{t.hero.cta}</span>
+          <span className="hidden sm:inline">{t.nav.stickyCta}</span>
         </Link>
       </motion.div>
     </motion.div>

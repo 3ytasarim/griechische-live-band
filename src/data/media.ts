@@ -6,7 +6,6 @@ import live5 from "@/assets/live-5.jpg";
 import giannis from "@/assets/giannis-bouzouki.jpg";
 import giorgosLyra from "@/assets/giorgos-lyra-live.jpg";
 import giorgosKeys from "@/assets/giorgos-keyboards.jpg";
-import giorgosSaenger from "@/assets/giorgos-saenger.jpg";
 import bandKomplett from "@/assets/band-komplett.jpg";
 import bandKomplett3 from "@/assets/band-komplett-3.jpg";
 import bandKomplett3_2 from "@/assets/band-komplett-3-2.jpg";
@@ -15,8 +14,9 @@ import liveSaenger from "@/assets/live-saenger.jpg";
 import liveSaenger3 from "@/assets/live-saenger3.jpg";
 import liveKeyboards from "@/assets/live-keyboards.jpg";
 import pavlos from "@/assets/pavlos-klarino.jpg";
-import heroVideo from "@/assets/hero-teaser-hq.mp4";
-import heroPoster from "@/assets/hero-poster-hq.jpg";
+import heroBgVideo from "@/assets/hero-bg-teaser.mp4";
+import heroBgPoster from "@/assets/hero-bg-teaser-poster.jpg";
+import vasilisGesang from "@/assets/vasilis-gesang.jpg";
 import type { Translation } from "@/i18n/translations";
 
 export interface Photo {
@@ -26,9 +26,8 @@ export interface Photo {
   captionKey: keyof Translation["gallery"]["photos"];
 }
 
-export const heroPhoto = { src: live1, width: 1620, height: 1080 };
-export const heroVideoSrc = heroVideo;
-export const heroPosterSrc = heroPoster;
+export const heroBgVideoSrc = heroBgVideo;
+export const heroBgPosterSrc = heroBgPoster;
 export const aboutPhoto = { src: bandKomplett3_2, width: 1360, height: 1920 };
 
 export const photos: Photo[] = [
@@ -49,9 +48,10 @@ export const photos: Photo[] = [
   { src: liveSaenger, width: 1080, height: 1620, captionKey: "p15" },
 ];
 
-export const memberPhotos: Record<"m1" | "m2" | "m3" | "m4", string> = {
-  m1: giorgosSaenger,
-  m2: liveBouzouki,
+export const memberPhotos: Record<"m1" | "m2" | "m3" | "m4" | "m5", string> = {
+  m1: giorgosLyra,
+  m2: giannis,
   m3: pavlos,
-  m4: liveKeyboards,
+  m4: giorgosKeys,
+  m5: vasilisGesang,
 };

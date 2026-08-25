@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/WhatsAppIcon";
 import { CallToAction } from "@/components/home/CallToAction";
 import { Reveal } from "@/components/common/Reveal";
-import { SectionHeading } from "@/components/common/SectionHeading";
+import { HeroSection } from "@/components/ui/hero-section-9";
 import { site } from "@/config/site";
 import { useI18n } from "@/i18n/I18nProvider";
 
@@ -60,20 +60,31 @@ function ContactPage() {
     },
     { icon: Phone, label: t.contact.phone, value: site.phone, href: site.phoneHref },
     { icon: Mail, label: t.contact.email, value: site.email, href: `mailto:${site.email}` },
+    {
+      icon: Instagram,
+      label: t.contact.instagram,
+      value: "Empnefsi_Live_Official",
+      href: site.instagram,
+      external: true,
+    },
+    {
+      icon: Facebook,
+      label: t.contact.facebook,
+      value: "Empnefsi Live",
+      href: site.facebook,
+      external: true,
+    },
     { icon: MapPin, label: t.contact.location, value: site.address, href: site.mapsLink, external: true },
   ];
 
   return (
     <>
-      <section className="border-b border-border pt-44 pb-20 lg:pt-52">
-        <div className="container-lux">
-          <SectionHeading
-            eyebrow={t.contact.eyebrow}
-            title={t.contact.title}
-            subtitle={t.contact.subtitle}
-          />
-        </div>
-      </section>
+      <HeroSection
+        className="border-b border-border pt-44 pb-20 lg:pt-52"
+        eyebrow={t.contact.eyebrow}
+        title={t.contact.title}
+        subtitle={t.contact.subtitle}
+      />
 
       <section className="py-24 lg:py-32">
         <div className="container-lux grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
@@ -110,14 +121,14 @@ function ContactPage() {
             </Reveal>
           </div>
 
-          <Reveal direction="right">
-            <div className="overflow-hidden rounded-md border border-border shadow-[var(--shadow-elegant)]">
+          <Reveal direction="right" className="flex min-h-[420px] flex-col">
+            <div className="flex-1 overflow-hidden rounded-md border border-border shadow-[var(--shadow-elegant)]">
               <iframe
                 title={t.contact.mapTitle}
                 src={site.mapsEmbed}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-[420px] w-full lg:h-[560px]"
+                className="h-full w-full"
               />
             </div>
             <a

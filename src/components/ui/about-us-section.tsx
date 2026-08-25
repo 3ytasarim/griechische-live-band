@@ -13,10 +13,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
-import { Link } from "@tanstack/react-router";
 import { aboutPhoto } from "@/data/media";
 import { useI18n } from "@/i18n/I18nProvider";
 import { LiquidMetalShell } from "@/components/ui/liquid-metal-button";
+import { useQuoteModal } from "@/components/layout/QuoteModalProvider";
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -25,6 +25,7 @@ const itemVariants = {
 
 export default function AboutUsSection() {
   const { t } = useI18n();
+  const { openQuoteModal } = useQuoteModal();
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -38,19 +39,41 @@ export default function AboutUsSection() {
 
   const f = t.about.features;
   const services = [
-    { ...f.f1, position: "left" as const },
     { ...f.f2, position: "left" as const },
     { ...f.f3, position: "left" as const },
     { ...f.f4, position: "right" as const },
     { ...f.f5, position: "right" as const },
-    { ...f.f6, position: "right" as const },
   ];
 
   const stats = [
-    { icon: <Calendar className="h-6 w-6" />, value: 20, label: t.stats.years, suffix: "+" },
-    { icon: <Star className="h-6 w-6" />, value: 800, label: t.stats.events, suffix: "+" },
-    { icon: <Users className="h-6 w-6" />, value: 8, label: t.stats.musicians, suffix: "" },
-    { icon: <Music2 className="h-6 w-6" />, value: 500, label: t.stats.repertoire, suffix: "+" },
+    {
+      icon: <Calendar className="h-6 w-6" />,
+      value: 15,
+      label: t.stats.years,
+      description: t.stats.yearsDesc,
+      suffix: "+",
+    },
+    {
+      icon: <Star className="h-6 w-6" />,
+      value: 900,
+      label: t.stats.events,
+      description: t.stats.eventsDesc,
+      suffix: "+",
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      value: 5,
+      label: t.stats.musicians,
+      description: t.stats.musiciansDesc,
+      suffix: "",
+    },
+    {
+      icon: <Music2 className="h-6 w-6" />,
+      value: 1500,
+      label: t.stats.repertoire,
+      description: t.stats.repertoireDesc,
+      suffix: "+",
+    },
   ];
 
   return (
@@ -87,7 +110,7 @@ export default function AboutUsSection() {
 
           <motion.h2
             variants={itemVariants}
-            className="mt-6 text-4xl leading-[1.08] font-semibold text-balance text-foreground sm:text-5xl"
+            className="mt-6 text-4xl leading-[1.08] font-semibold text-balance whitespace-pre-line text-foreground sm:text-5xl"
           >
             {t.about.title}
           </motion.h2>
@@ -182,12 +205,12 @@ export default function AboutUsSection() {
             <h3 className="text-2xl font-semibold text-foreground">{t.about.cta.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{t.about.cta.subtitle}</p>
           </div>
-          <Link to="/contact">
+          <button type="button" onClick={openQuoteModal}>
             <LiquidMetalShell size="sm">
               {t.about.cta.button}
               <ArrowRight className="h-4 w-4" />
             </LiquidMetalShell>
-          </Link>
+          </button>
         </motion.div>
       </div>
     </section>
@@ -230,12 +253,14 @@ function StatCounter({
   icon,
   value,
   label,
+  description,
   suffix,
   delay,
 }: {
   icon: React.ReactNode;
   value: number;
   label: string;
+  description: string;
   suffix: string;
   delay: number;
 }) {
@@ -269,6 +294,7 @@ function StatCounter({
       <p className="mt-2 text-xs leading-snug tracking-wide text-muted-foreground uppercase">
         {label}
       </p>
+      <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{description}</p>
     </motion.div>
   );
 }

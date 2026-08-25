@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Instagram, Facebook } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/WhatsAppIcon";
 import { useI18n } from "@/i18n/I18nProvider";
 import { languageLabels, languages } from "@/i18n/translations";
@@ -113,6 +113,26 @@ export function Footer() {
                 className="inline-flex items-center gap-2 transition-colors hover:text-white"
               >
                 <Mail className="h-4 w-4" /> {site.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-white"
+              >
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-white"
+              >
+                <Facebook className="h-4 w-4" /> Facebook
               </a>
             </li>
           </ul>

@@ -8,10 +8,12 @@ import { site } from "@/config/site";
 import logoDark from "@/assets/logo-dark.png";
 import { LiquidMetalShell } from "@/components/ui/liquid-metal-button";
 import { NavBar as TubelightNav } from "@/components/ui/tubelight-navbar";
+import { useQuoteModal } from "@/components/layout/QuoteModalProvider";
 
 
 export function Navbar() {
   const { t, lang, setLang } = useI18n();
+  const { openQuoteModal } = useQuoteModal();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -48,7 +50,11 @@ export function Navbar() {
       }`}
     >
       <div className="container-lux flex items-center justify-between gap-6">
-        <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+        <Link
+          to="/"
+          className="group flex items-center gap-3 lg:-ml-24"
+          onClick={() => setOpen(false)}
+        >
           <span className="flex items-center rounded-xl bg-white px-2 py-1 transition-transform group-hover:scale-[1.03]">
             <img
               src={logoDark}
@@ -106,9 +112,9 @@ export function Navbar() {
               ) : null}
             </AnimatePresence>
           </div>
-          <Link to="/contact" className="inline-flex">
+          <button type="button" onClick={openQuoteModal} className="inline-flex">
             <LiquidMetalShell size="sm">{t.nav.cta}</LiquidMetalShell>
-          </Link>
+          </button>
         </div>
 
         <button
@@ -158,9 +164,16 @@ export function Navbar() {
                 </button>
               ))}
             </div>
-            <Link to="/contact" onClick={() => setOpen(false)} className="mt-8 flex w-full">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openQuoteModal();
+              }}
+              className="mt-8 flex w-full"
+            >
               <LiquidMetalShell className="w-full">{t.nav.cta}</LiquidMetalShell>
-            </Link>
+            </button>
           </motion.div>
         ) : null}
       </AnimatePresence>

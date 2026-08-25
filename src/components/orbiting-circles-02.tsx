@@ -1,34 +1,32 @@
 import type { CSSProperties } from "react";
 import ParticleSphereAnimation from "@/components/ui/orbiting-circles-02-utils/particalsphear";
-import { instrumentKeys, type InstrumentKey } from "@/config/site";
+import { instrumentStripKeys, type InstrumentStripKey } from "@/config/site";
 import { useI18n } from "@/i18n/I18nProvider";
 
-import bouzouki from "@/assets/instr-bouzouki.jpg";
-import clarinet from "@/assets/instr-clarinet.jpg";
-import lyra from "@/assets/instr-lyra.jpg";
-import ntaouli from "@/assets/instr-ntaouli.jpg";
-import keyboard from "@/assets/instr-keyboard.jpg";
-import microphone from "@/assets/instr-microphone.jpg";
-import violin from "@/assets/instr-violin.jpg";
+import bouzouki from "@/assets/instr-strip-bouzouki-new.png";
+import clarinet from "@/assets/instr-strip-clarinet.jpg";
+import lyra from "@/assets/instr-strip-lyra-new.png";
+import daouli from "@/assets/instr-strip-daouli.jpg";
+import keyboard from "@/assets/instr-strip-keyboard.jpg.webp";
+import vocals from "@/assets/instr-strip-vocals-new.png";
 
-const images: Record<InstrumentKey, string> = {
+const images: Record<InstrumentStripKey, string> = {
   bouzouki,
   clarinet,
   lyra,
-  ntaouli,
+  ntaouli: daouli,
   keyboard,
-  microphone,
-  violin,
+  microphone: vocals,
 };
 
 export default function OrbitingCirclesGlobe() {
   const { t } = useI18n();
-  const name = (key: InstrumentKey) => t.instruments[key].name;
+  const name = (key: InstrumentStripKey) => t.instruments[key].name;
 
   const orbits = [
     {
-      size: "w-110 h-110 md:w-180 md:h-180",
-      duration: 18,
+      size: "w-130 h-130 md:w-200 md:h-200",
+      duration: 22,
       icons: [
         { src: images.bouzouki, alt: name("bouzouki"), angle: -60 },
         { src: images.clarinet, alt: name("clarinet"), angle: 0 },
@@ -36,32 +34,29 @@ export default function OrbitingCirclesGlobe() {
       ],
     },
     {
-      size: "w-150 h-150 md:w-220 md:h-220",
-      duration: 24,
-      icons: [
-        { src: images.ntaouli, alt: name("ntaouli"), angle: 0 },
-        { src: images.keyboard, alt: name("keyboard"), angle: -90 },
-      ],
-    },
-    {
-      size: "w-180 h-180 md:w-265 md:h-265",
+      size: "w-195 h-195 md:w-285 md:h-285",
       duration: 30,
       icons: [
-        { src: images.microphone, alt: name("microphone"), angle: -60 },
-        { src: images.violin, alt: name("violin"), angle: 0 },
-        { src: images.bouzouki, alt: name("bouzouki"), angle: 60 },
+        { src: images.ntaouli, alt: name("ntaouli"), angle: -60 },
+        { src: images.keyboard, alt: name("keyboard"), angle: 0 },
+        {
+          src: images.microphone,
+          alt: name("microphone"),
+          angle: 60,
+          objectPosition: "center 20%",
+        },
       ],
     },
   ];
 
   return (
-    <div className="relative flex h-110 w-full justify-center overflow-hidden md:h-160">
-      {/* Center particle globe */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 aspect-square w-75 -translate-x-1/2 translate-y-1/2 md:w-145">
+    <div className="relative flex h-115 w-full justify-center overflow-hidden md:h-175">
+      {/* Große rote Partikelkugel im Hintergrund */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-0 aspect-square w-90 -translate-x-1/2 translate-y-1/2 md:w-170">
         <ParticleSphereAnimation />
       </div>
 
-      {/* Orbiting rings */}
+      {/* Zwei Umlaufbahnen mit je 3 Instrumenten */}
       {orbits.map((orbit, index) => {
         const isCW = index % 2 === 0;
         const orbitAnim = isCW ? "orbit-cw" : "orbit-ccw";
@@ -79,12 +74,12 @@ export default function OrbitingCirclesGlobe() {
         return (
           <div
             key={index}
-            className={`absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-border ${orbit.size}`}
+            className={`absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2 rounded-full border border-border ${orbit.size}`}
           >
             {allIcons.map((iconData, iconIndex) => (
               <div
                 key={iconIndex}
-                className="absolute top-0 left-1/2 -ml-8 flex h-1/2 origin-bottom flex-col items-center justify-start"
+                className="absolute top-0 left-1/2 -ml-12 flex h-1/2 origin-bottom flex-col items-center justify-start md:-ml-14"
                 style={
                   {
                     "--start-angle": `${iconData.angle}deg`,
@@ -93,7 +88,7 @@ export default function OrbitingCirclesGlobe() {
                 }
               >
                 <div
-                  className="relative z-10 -mt-8 h-14 w-14 overflow-hidden rounded-full border border-border bg-background md:h-16 md:w-16"
+                  className="relative -mt-12 h-24 w-24 shrink-0 md:h-28 md:w-28"
                   style={
                     {
                       "--counter-offset": `${-iconData.angle}deg`,
@@ -101,13 +96,18 @@ export default function OrbitingCirclesGlobe() {
                     } as CSSProperties
                   }
                 >
-                  <img
-                    src={iconData.src}
-                    alt={iconData.alt}
-                    width={64}
-                    height={64}
-                    className="h-full w-full object-cover"
-                  />
+                  <div className="h-full w-full overflow-hidden rounded-full border border-border bg-background shadow-elegant">
+                    <img
+                      src={iconData.src}
+                      alt={iconData.alt}
+                      className="h-full w-full object-cover"
+                      style={
+                        "objectPosition" in iconData
+                          ? { objectPosition: iconData.objectPosition }
+                          : undefined
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             ))}

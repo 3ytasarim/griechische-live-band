@@ -53,7 +53,7 @@ const canvasStyle = `
 interface LiquidMetalShellProps {
   children: ReactNode;
   variant?: Variant;
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
@@ -188,7 +188,7 @@ export function LiquidMetalShell({
       <span
         className={cn(
           "relative z-30 inline-flex items-center justify-center gap-2 rounded-full",
-          size === "sm" ? "px-4 py-2 text-xs" : "px-7 py-3.5",
+          size === "sm" ? "px-4 py-2 text-xs" : size === "lg" ? "px-8 py-4 text-base" : "px-7 py-3.5",
           variant === "solid" ? "text-background" : "text-foreground",
         )}
       >

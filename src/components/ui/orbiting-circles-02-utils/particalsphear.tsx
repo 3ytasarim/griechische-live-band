@@ -8,17 +8,17 @@ const PARTICLE_COUNT = 9000;
 // Physical radius of the sphere
 const RADIUS = 275;
 
-// Color palette for the particles - contains blues, oranges, greens, and highlights
+// Color palette for the particles - shades of the brand red, plus light highlights
 const COLORS = [
-    "#ea580c",
-    "#d97706",
-    "#84cc16",
-    "#f1f5f9",
-    "#94a3b8",
-    "#2563eb",
-    "#3b82f6",
-    "#60a5fa",
-    "#f97316",
+    "#7f1d1d",
+    "#b91c1c",
+    "#dc2626",
+    "#fee2e2",
+    "#fca5a5",
+    "#991b1b",
+    "#ef4444",
+    "#f87171",
+    "#e11d27",
 ];
 
 /**
@@ -48,13 +48,13 @@ function generateSpherePoints(count: number) {
         const yFactor = (y + RADIUS) / (2 * RADIUS); // Normalize Y position to 0.0 - 1.0 range
 
         if (Math.random() > 0.9) {
-            // 10% chance to be a bright white "star" highlight
+            // 10% chance to be a bright highlight
             colorIndex = 7;
         } else if (yFactor > 0.6) {
-            // Top section of the sphere tends towards Blues
+            // Top section tends towards deep reds
             colorIndex = Math.floor(Math.random() * 3);
         } else if (yFactor < 0.4) {
-            // Bottom section tends towards Oranges/Warm tones
+            // Bottom section tends towards lighter warm reds
             colorIndex = 3 + Math.floor(Math.random() * 3);
         } else {
             // Middle section is a mix of all colors

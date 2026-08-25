@@ -215,8 +215,21 @@
   }
 }
 
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .infinite-scroll {
   animation: marquee 45s linear infinite;
+}
+
+.infinite-scroll-reverse {
+  animation: marquee-reverse 45s linear infinite;
 }
 
 .scroll-container {
@@ -321,6 +334,12 @@
   }
   100% {
     transform: translateY(100%);
+  }
+}
+
+@keyframes gradient {
+  to {
+    background-position: var(--bg-size) 0;
   }
 }
 
