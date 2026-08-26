@@ -3,6 +3,7 @@ import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/WhatsAppIcon";
 import { CallToAction } from "@/components/home/CallToAction";
 import { Reveal } from "@/components/common/Reveal";
+import { FloatingBackground } from "@/components/common/FloatingBackground";
 import { HeroSection } from "@/components/ui/hero-section-9";
 import { site } from "@/config/site";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -86,9 +87,10 @@ function ContactPage() {
         subtitle={t.contact.subtitle}
       />
 
-      <section className="py-24 lg:py-32">
-        <div className="container-lux grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <div className="space-y-4">
+      <section className="relative overflow-hidden py-24 lg:py-32">
+        <FloatingBackground variant="dark" />
+        <div className="container-lux relative z-10">
+          <div className="mx-auto max-w-xl space-y-4">
             {cards.map((card, i) => (
               <Reveal key={card.label} delay={i * 0.08}>
                 <a
@@ -120,26 +122,6 @@ function ContactPage() {
               </div>
             </Reveal>
           </div>
-
-          <Reveal direction="right" className="flex min-h-[420px] flex-col">
-            <div className="flex-1 overflow-hidden rounded-md border border-border shadow-[var(--shadow-elegant)]">
-              <iframe
-                title={t.contact.mapTitle}
-                src={site.mapsEmbed}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full"
-              />
-            </div>
-            <a
-              href={site.mapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <MapPin className="h-4 w-4" /> {t.contact.openMaps}
-            </a>
-          </Reveal>
         </div>
       </section>
 

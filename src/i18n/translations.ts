@@ -218,7 +218,7 @@ const de = {
     close: "Schließen",
   },
   footer: {
-    tagline: "Professionelle griechische Live Band für Hochzeiten, Galas und Firmenfeiern.",
+    tagline: "Griechische Live-Musik für Hochzeiten, Tanzveranstaltungen und Events jeder Art.",
     quickLinks: "Navigation",
     contact: "Kontakt",
     language: "Sprache",
@@ -234,7 +234,7 @@ const de = {
     q2: 'Wie viele Musiker treten auf?',
     a2: 'Die Besetzung von Empnefsi Live besteht aus 5 Musikern. Je nach Anforderungen Ihrer Veranstaltung kann zusätzlich ein DJ gebucht werden.',
     q3: 'Welche Musik spielen Sie?',
-    a3: 'Wir spielen ein breites Repertoire der griechischen Musik: Laiko, Entehna, Dimotika, Instrumental, sowie traditionelle Musik aus ganz Griechenland und der Türkei. Das Programm wird individuell auf Ihre Veranstaltung und Ihr Publikum abgestimmt.',
+    a3: 'Wir spielen ein breites Repertoire der griechischen Musik: Laiko, Entehna, Dimotika, Instrumental, sowie traditionelle Musik aus ganz Griechenland. Das Programm wird individuell auf Ihre Veranstaltung und Ihr Publikum abgestimmt.',
     q4: 'Wie lange spielen Sie an einem Abend?',
     a4: 'Die Standardspielzeit richtet sich nach Ihren Wünschen und dem Ablauf Ihrer Veranstaltung. In der Regel spielen wir durchgehend, mit kurzen Pausen, in Absprache mit Ihnen.',
     q5: 'Bringen Sie Technik und Licht mit?',
@@ -473,7 +473,7 @@ const el: Dict = {
     close: "Κλείσιμο",
   },
   footer: {
-    tagline: "Επαγγελματική ελληνική ζωντανή ορχήστρα για γάμους, gala και εταιρικές εκδηλώσεις.",
+    tagline: "Ελληνικό μουσικό συγκρότημα για γάμους, χορούς και κάθε είδος εκδήλωσης.",
     quickLinks: "Πλοήγηση",
     contact: "Επικοινωνία",
     language: "Γλώσσα",
