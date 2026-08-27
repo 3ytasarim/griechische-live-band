@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/common/WhatsAppIcon";
 import { CallToAction } from "@/components/home/CallToAction";
 import { Reveal } from "@/components/common/Reveal";
@@ -75,7 +75,6 @@ function ContactPage() {
       href: site.facebook,
       external: true,
     },
-    { icon: MapPin, label: t.contact.location, value: site.address, href: site.mapsLink, external: true },
   ];
 
   return (
