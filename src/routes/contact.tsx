@@ -22,10 +22,10 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "WhatsApp, Telefon oder E-Mail — wir melden uns kurzfristig mit einem Angebot.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://griechischeband.de/contact" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://griechischeband.de/contact" }],
     scripts: [
       {
         type: "application/ld+json",

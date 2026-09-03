@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://griechischeband.de/sitemap.xml

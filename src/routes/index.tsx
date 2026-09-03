@@ -10,25 +10,25 @@ import { CallToAction } from "@/components/home/CallToAction";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Griechische Live Band | Hochzeiten, Galas & Firmenfeiern" },
+      { title: "Griechische Live Band für Events & Hochzeiten | Empnefsi Live" },
       {
         name: "description",
         content:
-          "Professionelle griechische Live Band für Hochzeiten, Firmenfeiern und Galas. Authentische Musik, erstklassige Musiker, deutschlandweit buchbar.",
+          "Empnefsí Live – griechische Live-Musik für Hochzeiten, Firmenfeiern und besondere Veranstaltungen. Authentisch, energiegeladen und mit Leidenschaft für echte griechische Stimmung.",
       },
       {
         property: "og:title",
-        content: "Griechische Live Band | Hochzeiten, Galas & Firmenfeiern",
+        content: "Griechische Live Band für Events & Hochzeiten | Empnefsi Live",
       },
       {
         property: "og:description",
         content:
-          "Live-Musik, die Ihren Abend zum Konzert macht — griechische Live Band für Hochzeiten, Galas und Firmenfeiern.",
+          "Empnefsí Live – griechische Live-Musik für Hochzeiten, Firmenfeiern und besondere Veranstaltungen. Authentisch, energiegeladen und mit Leidenschaft für echte griechische Stimmung.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://griechischeband.de/" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://griechischeband.de/" }],
   }),
   component: Index,
 });

@@ -25,10 +25,10 @@ export const Route = createFileRoute("/gallery")({
         property: "og:description",
         content: "Eindrücke von Hochzeiten, Galas und Festabenden mit unserer griechischen Band.",
       },
-      { property: "og:url", content: "/gallery" },
+      { property: "og:url", content: "https://griechischeband.de/gallery" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
+    links: [{ rel: "canonical", href: "https://griechischeband.de/gallery" }],
   }),
   component: GalleryPage,
 });
