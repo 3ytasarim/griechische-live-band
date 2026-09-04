@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Cake, Droplet, Heart, PartyPopper, X, Check } from "lucide-react";
+import { ArrowRight, Cake, Droplet, Heart, PartyPopper, X, Check, AlertCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { site } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { sendQuoteEmail } from "@/lib/send-quote-email";
 
 interface QuoteModalProps {
   open: boolean;
@@ -30,6 +30,8 @@ export function QuoteModal({ open, onClose }: QuoteModalProps) {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -56,6 +58,8 @@ export function QuoteModal({ open, onClose }: QuoteModalProps) {
         setPhone("");
         setMessage("");
         setSent(false);
+        setSending(false);
+        setError(false);
       }, 300);
       return () => clearTimeout(reset);
     }
@@ -65,22 +69,24 @@ export function QuoteModal({ open, onClose }: QuoteModalProps) {
     setSelected((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    setError(false);
 
-    const categoryLabels = selected.map((key) => m.categories[key]).join(", ") || "-";
-    const subject = `${m.eyebrow}: ${categoryLabels}`;
-    const body = [
-      `${categoryLabels}`,
-      `${name} · ${email}${phone ? ` · ${phone}` : ""}`,
-      "",
-      message,
-    ].join("\n");
+    const categoryLabels = selected.map((key) => m.categories[key]);
 
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setSent(true);
-    setTimeout(onClose, 2200);
+    try {
+      await sendQuoteEmail({
+        data: { categories: categoryLabels, name, email, phone, message },
+      });
+      setSent(true);
+      setTimeout(onClose, 2200);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -193,9 +199,17 @@ export function QuoteModal({ open, onClose }: QuoteModalProps) {
                   />
                 </div>
 
+                {error ? (
+                  <p className="mt-4 flex items-center gap-2 text-sm text-[var(--red)]">
+                    <AlertCircle className="h-4 w-4 shrink-0" />
+                    {m.errorText}
+                  </p>
+                ) : null}
+
                 <button
                   type="submit"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--red)] px-6 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-red)]"
+                  disabled={sending}
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--red)] px-6 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-red)] disabled:pointer-events-none disabled:opacity-60"
                 >
                   {m.submit}
                   <ArrowRight className="h-4 w-4" />

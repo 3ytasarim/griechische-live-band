@@ -215,6 +215,7 @@ const de = {
     footnote: "100% kostenlos & unverbindlich · Antwort innerhalb 24h",
     successTitle: "Vielen Dank!",
     successText: "Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden.",
+    errorText: "Da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns per WhatsApp.",
     close: "Schließen",
   },
   footer: {
@@ -470,6 +471,7 @@ const el: Dict = {
     footnote: "100% δωρεάν & χωρίς δέσμευση · Απάντηση εντός 24 ωρών",
     successTitle: "Ευχαριστούμε!",
     successText: "Λάβαμε το αίτημά σας και θα επικοινωνήσουμε μαζί σας εντός 24 ωρών.",
+    errorText: "Κάτι πήγε στραβά. Δοκιμάστε ξανά ή γράψτε μας στο WhatsApp.",
     close: "Κλείσιμο",
   },
   footer: {
@@ -721,6 +723,7 @@ const en: Dict = {
     footnote: "100% free & no obligation · Reply within 24h",
     successTitle: "Thank you!",
     successText: "We've received your request and will get back to you within 24 hours.",
+    errorText: "Something went wrong. Please try again or message us on WhatsApp.",
     close: "Close",
   },
   footer: {
